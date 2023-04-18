@@ -17,12 +17,19 @@ function App() {
 
    let copyMarks=[...marks]
 
-   let update = x + value;
-   if (x>0)
+  //  let update = 0
+
+   if (x > 0 && (value == -1))
    { 
-   copyMarks[index]--
+    // update = x + value;
+   copyMarks[index] +=value
    
-              }
+   }
+    if (value == +1)
+              
+              
+    {  copyMarks[index] +=value}
+
     setMarks(copyMarks)
   }
 
@@ -34,7 +41,7 @@ function App() {
      <ul>
       {
 
-       marks.map((x, index)=>( <li><button onClick={()=>dec(index, +1)}>+</button>{x}
+       marks.map((x, index)=>( <li><button onClick={()=>dec(x,index, +1)}>+</button>{x}
        <button onClick={()=>dec(x,index,-1)}>-</button></li>)  )     }
 
 
