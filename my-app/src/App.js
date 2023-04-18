@@ -1,61 +1,67 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [marks, setMarks] = useState([10,120,21,12,32,23,1,12213,232,3232,232]);
+  const [products, setProducts] = useState([
+    {
+      title: "Zinger-Burger",
+      price: 350,
+      quantity: 0,
+      image: "burger.jpg",
+      key: 1
+    },
+    {
+      title: "Zinger-Burger",
+      price: 350,
+      quantity: 0,
+      image: "burger.jpg",
+      key: 2
+    },
+    {
+      title: "Zinger-Burger",
+      price: 350,
+      quantity: 0,
+      image: "burger.jpg",
+      key: 3
+    },
+    {
+      title: "Zinger-Burger",
+      price: 350,
+      quantity: 0,
+      image: "burger.jpg",
+      key: 4
+    }
+  ]);
 
-  // const inc = (index) => {
-   
-  //   let copyMarks=[...marks]
-  //   copyMarks[index]++
-  //   setMarks(copyMarks);
-  //   // setCounter(counter + 1);
-     
-  // };
-
- const dec=(index,value)=>
- {
-
-   let copyMarks=[...marks];
-
-   copyMarks[index] +=value;
-
-    setMarks(copyMarks)
+  const dec = (index, value, quantity) => {
+    let copyProducts = [...products];
+    copyProducts[index].quantity += value;
+    setProducts(copyProducts);
   }
 
-  return(
+  return (
     <>
-    
-    <h1>Makrs Sheet</h1>
 
-     <ul>
-      {
+<div className="container" style={{ display: 'flex' }}>
+      <h1>Menu</h1>
 
-       marks.map((x, index)=>( <li><button onClick={()=>dec(index, +1)}>+</button>{x}
-       <button onClick={()=>dec(index,-1)} disabled={x===0} >-</button></li>)  )     }
-
-
-</ul>
-
-
-    
+      {products.map((product, index) => (
+        <div className='card' style={{ width: '18rem' }} key={product.key}>
+          <img className='card-img-top' src={product.image} alt="" />
+          <div className='card-body'>
+            <h4 className='card-title'>{product.title}</h4>
+            <p>{product.price}</p>
+            <button className='btn btn-sucess' onClick={() => dec(index, 1, product.quantity)}>+</button>
+            {product.quantity}
+            <button className='btn btn-sucess' onClick={() => dec(index, -1, product.quantity)} disabled={product.quantity === 0}>-</button>
+            <button className='btn btn-primary'>Buy Now</button>
+          </div>
+        </div>
+        
+      ))}
+      </div>
     </>
-  )
-
-
-
-
-
-
-
-
-
-
-
-
-
+  );
 }
-
-
 
 export default App;
