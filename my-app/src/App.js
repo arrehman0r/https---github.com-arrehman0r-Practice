@@ -13,22 +13,12 @@ function App() {
      
   // };
 
- const dec=(x,index,value)=>{
+ const dec=(index,value)=>
+ {
 
-   let copyMarks=[...marks]
+   let copyMarks=[...marks];
 
-  //  let update = 0
-
-   if (x > 0 && (value == -1))
-   { 
-    // update = x + value;
-   copyMarks[index] +=value
-   
-   }
-    if (value == +1)
-              
-              
-    {  copyMarks[index] +=value}
+   copyMarks[index] +=value;
 
     setMarks(copyMarks)
   }
@@ -41,8 +31,8 @@ function App() {
      <ul>
       {
 
-       marks.map((x, index)=>( <li><button onClick={()=>dec(x,index, +1)}>+</button>{x}
-       <button onClick={()=>dec(x,index,-1)}>-</button></li>)  )     }
+       marks.map((x, index)=>( <li><button onClick={()=>dec(index, +1)}>+</button>{x}
+       <button onClick={()=>dec(index,-1)} disabled={x===0} >-</button></li>)  )     }
 
 
 </ul>
